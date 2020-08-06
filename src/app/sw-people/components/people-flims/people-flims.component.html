@@ -1,1 +1,25 @@
-<p>people-flims works!</p>
+<div class="card mt-3" *ngIf="characterFlims">
+  <div class="card-header">
+    <p>Selected Character Flims</p>
+  </div>
+  <div class="card-body">
+    <ul class="list-group">
+      <li class="list-group-item text-light bg-dark">
+        <div class="row">
+          <div class="col">Titles</div>
+          <div class="col">Release dates</div>
+        </div>
+      </li>
+      <li
+        class="list-group-item"
+        *ngFor="let flim of characterFlims; let index = index"
+        [ngClass]="{ 'bg-light': 1 === index % 2 }"
+      >
+        <div class="row">
+          <div class="col">{{ flim.title }}</div>
+          <div class="col">{{ flim.release_date | date }}</div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
