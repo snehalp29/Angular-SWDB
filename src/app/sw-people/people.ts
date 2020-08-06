@@ -1,4 +1,4 @@
-export interface people {
+export interface People {
   name: string;
   height: string;
   mass: string;
@@ -8,7 +8,7 @@ export interface people {
   birth_year: string;
   gender: string;
   homeworld: string;
-  films: flim[];
+  films: Flim[];
   species: any[];
   vehicles: string[];
   starships: string[];
@@ -17,7 +17,7 @@ export interface people {
   url: string;
 }
 
-export interface flim {
+export interface Flim {
   title: string;
   episode_id: number;
   opening_crawl: string;
@@ -34,7 +34,7 @@ export interface flim {
   url: string;
 }
 
-export interface minFlim{
+export interface MinFlim {
   title: string;
   release_date: string;
 }
