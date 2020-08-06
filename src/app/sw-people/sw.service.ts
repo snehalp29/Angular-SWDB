@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { tap, map, mergeMap, catchError, toArray } from 'rxjs/operators';
-import { Characters, Character } from './character';
-import { Observable, throwError, from } from 'rxjs';
-import { people, flim, minFlim } from './people';
+import { map, mergeMap, catchError, toArray } from 'rxjs/operators';
+import { Characters } from './character';
+import { throwError } from 'rxjs';
+import { People, Flim, MinFlim } from './people';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,15 +24,13 @@ export class SwService {
    * Takes peoples url as input and returns character's films title and release date.
    */
   getCharacterAndFlims(url: string) {
-    return this.http.get<people>(url).pipe(
-      mergeMap(p => p.films),
-      mergeMap((film) => this.http.get<flim>(String(film))),
-      map((f) => ({ title: f.title, release_date: f.release_date } as minFlim)),
+    return this.http.get<People>(url).pipe(
+      mergeMap((p) => p.films),
+      mergeMap((film) => this.http.get<Flim>(String(film))),
+      map((f) => ({ title: f.title, release_date: f.release_date } as MinFlim)),
       toArray(),
       catchError(this.handleError)
     );
-
-
   }
 
   handleError(err: any) {
