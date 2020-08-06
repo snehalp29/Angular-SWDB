@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MinFlim } from '../../people';
-import { constants } from 'src/app/shared/constants';
+import { constants } from '../../../shared/constants';
 import { SwService } from '../../sw.service';
 import { Observable, EMPTY } from 'rxjs';
 
