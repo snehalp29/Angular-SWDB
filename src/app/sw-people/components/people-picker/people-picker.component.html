@@ -1,1 +1,13 @@
-<p>people-picker works!</p>
+<h1>Select your favourite character</h1>
+
+<div *ngIf="characters$ | async as characters">
+  <select
+    class="selectpicker"
+    (change)="selectedCharacter($event.target.value)"
+  >
+    <option value="{{ empty_select }}"> Select</option>
+    <option *ngFor="let char of characters" [value]="char.url"
+      >{{ char.name }}
+    </option>
+  </select>
+</div>
