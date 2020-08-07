@@ -2,11 +2,11 @@
   "characters": [
     {
       "name": "Luke Skywalker",
-      "url": "//swapi.dev/api/people/1/"
+      "url": "https://swapi.dev/api/people/1/"
     },
     {
       "name": "Darth Vader",
-      "url": "//swapi.dev/api/people/4/"
+      "url": "https://swapi.dev/api/people/4/"
     },
     {
       "name": "Obi-wan Kenobi",
