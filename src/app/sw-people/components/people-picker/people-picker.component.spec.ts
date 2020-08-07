@@ -24,10 +24,24 @@ describe('PeoplePickerComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(PeoplePickerComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
+    fixture.detectChanges();
     expect(component).toBeTruthy();
+  });
+
+  it('selectedCharacter should emit selected character ', () => {
+    // Arrange
+    spyOn(component.characterSelected, 'next');
+
+    // Act
+    component.selectedCharacter('https://swapi.dev/api/people/1/');
+    fixture.detectChanges();
+
+    // Assert
+    expect(component.characterSelected.next).toHaveBeenCalledWith(
+      'https://swapi.dev/api/people/1/'
+    );
   });
 });
