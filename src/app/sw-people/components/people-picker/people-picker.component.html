@@ -1,13 +1,24 @@
 <h1>Select your favourite character</h1>
 
-<div *ngIf="characters$ | async as characters">
-  <select
-    class="selectpicker"
-    (change)="selectedCharacter($event.target.value)"
-  >
-    <option value="{{ empty_select }}"> Select</option>
-    <option *ngFor="let char of characters" [value]="char.url"
-      >{{ char.name }}
-    </option>
-  </select>
+<div *ngIf="characters$ | withLoading | async as characters">
+  <ng-template [ngIf]="characters.value">
+    <select
+      class="selectpicker"
+      (change)="selectedCharacter($event.target.value)"
+    >
+      <option value="{{ empty_select }}"> Select</option>
+      <option *ngFor="let char of characters.value" [value]="char.url"
+        >{{ char.name }}
+      </option>
+    </select>
+  </ng-template>
+  <ng-template [ngIf]="characters.error">
+    <div class="alert alert-danger mt-3" role="alert">
+      {{ characters.error }}
+    </div>
+  </ng-template>
+  <ng-template [ngIf]="characters.loading"
+    >Loading...
+    <i class="mt-5 fa fa-3x fa-spinner fa-spin" aria-hidden="true"></i
+  ></ng-template>
 </div>
