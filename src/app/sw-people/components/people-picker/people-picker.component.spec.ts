@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PeoplePickerComponent } from './people-picker.component';
 import { SwService } from '../../sw.service';
+import { WithLoadingPipe } from 'src/app/shared/with-loading.pipe';
 
 describe('PeoplePickerComponent', () => {
   let component: PeoplePickerComponent;
@@ -15,7 +16,7 @@ describe('PeoplePickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [PeoplePickerComponent],
+      declarations: [PeoplePickerComponent, WithLoadingPipe],
       providers: [{ provide: SwService, useValue: swServiceSpy }],
     }).compileComponents();
   }));

@@ -1,4 +1,21 @@
 <div class="main container">
   <app-people-picker (characterSelected)="onCharacterSelected($event)">
   </app-people-picker>
+
+  <div *ngIf="characterFlims$ | withLoading | async as characterFlims">
+    <ng-template [ngIf]="characterFlims.value">
+      <app-people-flims
+        [characterFlims]="characterFlims.value"
+      ></app-people-flims>
+    </ng-template>
+    <ng-template [ngIf]="characterFlims.error">
+      <div class="alert alert-danger mt-3" role="alert">
+        {{ characterFlims.error }}
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="characterFlims.loading && selectedUrl != empty_select"
+      >Loading...
+      <i class="mt-5 fa fa-3x fa-spinner fa-spin" aria-hidden="true"></i
+    ></ng-template>
+  </div>
 </div>
