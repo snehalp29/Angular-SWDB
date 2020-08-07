@@ -15,9 +15,10 @@ export class SwService {
   getCharacters() {
     const charUrl = '../assets/characters.json';
 
-    return this.http
-      .get<Characters>(charUrl)
-      .pipe(map((chrs: Characters) => chrs.characters));
+    return this.http.get<Characters>(charUrl).pipe(
+      map((chrs: Characters) => chrs.characters),
+      catchError(this.handleError)
+    );
   }
   /**
    *
